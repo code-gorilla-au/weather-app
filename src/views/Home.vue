@@ -32,7 +32,7 @@
       <p><base-icon pack="far" icon="fa-moon" /> {{ astro.moonset }}</p>
     </div>
     <div class="home-hourly-forecast">
-      <p v-for="hour in hours" :key="hour.date">
+      <p v-for="hour in hours" :key="hour.time">
         {{ hour.time }}
         <img :src="hour.condition.icon" :alt="hour.condition.text" />
       </p>
