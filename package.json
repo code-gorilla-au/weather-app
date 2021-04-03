@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "db-server": "json-server --watch tests/unit/data/db.json",
+    "db-server": "json-server --watch tests/unit/data/db.json --routes tests/unit/data/routes.json",
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "test:unit": "vue-cli-service test:unit",
