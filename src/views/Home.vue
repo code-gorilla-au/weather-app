@@ -3,7 +3,7 @@
     <div class="home-weather-summary">
       <div>
         <h3>{{ location.name }}</h3>
-        <h3>{{ current.temp_c }}</h3>
+        <h3>{{ currentTemp }}</h3>
         <p>{{ current.condition.text }}</p>
       </div>
       <div>
@@ -55,16 +55,20 @@ export default defineComponent({
     const dayIndex = ref(0);
     const { data } = await getForecast(defaultLocation, 1);
     const today = data.forecast.forecastday[dayIndex.value].day;
+    const current = data.current;
+    const hour = data.forecast.forecastday[dayIndex.value].hour;
     const astro = data.forecast.forecastday[dayIndex.value].astro;
+    const currentTemp = formatCelsius(current.temp_c);
     const minTemp = formatCelsius(today.mintemp_c);
     const maxTemp = formatCelsius(today.maxtemp_c);
     const changeOfRain = formatPercent(today.daily_chance_of_rain);
     const windSpeed = formatKph(today.maxwind_kph);
     return {
       location: data.location,
-      current: data.current,
-      today,
+      current,
+      currentTemp,
       astro,
+      hour,
       minTemp,
       maxTemp,
       changeOfRain,

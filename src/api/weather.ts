@@ -15,6 +15,7 @@ export interface Forecast {
   date: string;
   day: Day;
   astro: Astro;
+  hour: Hour[];
 }
 
 export interface Day {
@@ -28,6 +29,17 @@ export interface Day {
   uv: number;
 }
 
+export interface Hour {
+  time: string;
+  temp_c: number;
+  condition: Condition;
+  wind_kph: number;
+  precip_mm: number;
+  humidity: number;
+  chance_of_rain: number;
+  uv: number;
+}
+
 export interface Location {
   name: string;
   region: string;
@@ -36,7 +48,7 @@ export interface Location {
 export interface Current {
   last_updated_epoch: number;
   last_updated: string;
-  temp_c: Float64Array;
+  temp_c: number;
   condition: Condition;
   wind_kph: number;
   wind_dir: string;
