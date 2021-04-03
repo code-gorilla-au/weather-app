@@ -2,9 +2,9 @@
   <div class="home">
     <div class="home-weather-summary">
       <div>
-        <h3>{{ location.name }}</h3>
-        <h3>{{ currentTemp }}</h3>
-        <p>{{ current.condition.text }}</p>
+        <h2>{{ location.name }}</h2>
+        <h1>{{ currentTemp }}</h1>
+        <h4>{{ current.condition.text }}</h4>
       </div>
       <div>
         <img :src="current.condition.icon" :alt="current.condition.text" />
@@ -48,6 +48,7 @@ export default defineComponent({
     const dayIndex = ref(0);
     const { data } = await getForecast(defaultLocation, 1);
     const today = data.forecast.forecastday[dayIndex.value].day;
+    const week = data.forecast.forecastday;
     const current = data.current;
     const hours = data.forecast.forecastday[dayIndex.value].hour;
     const astro = data.forecast.forecastday[dayIndex.value].astro;
@@ -66,12 +67,16 @@ export default defineComponent({
       maxTemp,
       changeOfRain,
       windSpeed,
+      week,
     };
   },
 });
 </script>
 
 <style lang="scss" scoped>
+.home {
+  margin: 0rem 0.5rem;
+}
 .home-weather-summary {
   display: flex;
   justify-content: space-between;
@@ -85,6 +90,7 @@ export default defineComponent({
   display: flex;
 }
 .home-hourly-forecast {
+  margin: 0.5rem;
   display: flex;
   justify-content: space-evenly;
   overflow-x: auto;
