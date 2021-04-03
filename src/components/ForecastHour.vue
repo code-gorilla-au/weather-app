@@ -1,13 +1,18 @@
 <template>
-  <section>
-    <p>{{ time }}</p>
-    <img :src="conditionIcon" :alt="conditionTextnpm" />
-  </section>
+  <div class="forecast-hour">
+    <p>
+      <img :src="conditionIcon" :alt="conditionText" />
+      {{ temp }}
+      {{ time }}
+    </p>
+  </div>
 </template>
 
 <script lang="ts">
-import { Hour } from "@/lib/weather";
 import { defineComponent, PropType } from "vue";
+import { Hour } from "@/lib/weather";
+import { formatCelsius } from "@/lib/format";
+
 export default defineComponent({
   name: "ForecastHour",
   props: {
@@ -17,13 +22,22 @@ export default defineComponent({
     },
   },
   setup(props) {
+    const splitTime = props.hour.time.split(" ");
     return {
-      time: new Date(props.hour.time),
+      time: splitTime[1],
       conditionText: props.hour.condition.text,
       conditionIcon: props.hour.condition.icon,
+      temp: formatCelsius(props.hour.temp_c),
     };
   },
 });
 </script>
 
-<style></style>
+<style lang="scss">
+.forecast-hour {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+</style>

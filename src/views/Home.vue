@@ -25,17 +25,9 @@
       </p>
       <p><base-icon icon="fa-wind" /> {{ windSpeed }}</p>
     </div>
-    <div class="home-astro-details">
-      <p><base-icon icon="fa-sun" /> {{ astro.sunrise }}</p>
-      <p><base-icon pack="far" icon="fa-sun" /> {{ astro.sunset }}</p>
-      <p><base-icon icon="fa-moon" /> {{ astro.moonrise }}</p>
-      <p><base-icon pack="far" icon="fa-moon" /> {{ astro.moonset }}</p>
-    </div>
+    <ForecastAstro :astro="astro" />
     <div class="home-hourly-forecast">
-      <p v-for="hour in hours" :key="hour.time">
-        {{ hour.time }}
-        <img :src="hour.condition.icon" :alt="hour.condition.text" />
-      </p>
+      <ForecastHour v-for="hour in hours" :key="hour.time" :hour="hour" />
     </div>
   </div>
 </template>
@@ -45,10 +37,12 @@ import { defineComponent, ref } from "vue";
 import { getForecast } from "@/api/weather";
 import { formatCelsius, formatKph, formatPercent } from "@/lib/format";
 import BaseIcon from "@/components/BaseIcon.vue";
+import ForecastHour from "@/components/ForecastHour.vue";
+import ForecastAstro from "@/components/ForecastAstro.vue";
 
 export default defineComponent({
   name: "Home",
-  components: { BaseIcon },
+  components: { BaseIcon, ForecastHour, ForecastAstro },
   async setup() {
     const defaultLocation = "Sydney";
     const dayIndex = ref(0);
