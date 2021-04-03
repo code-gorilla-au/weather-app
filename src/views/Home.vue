@@ -2,11 +2,16 @@
   <div class="home">
     <div class="home-weather-summary">
       <div>
-        <h3>Sydney</h3>
-        <h3>18</h3>
-        <p>Cloudy</p>
+        <h3>{{ forecast.location.name }}</h3>
+        <h3>{{ forecast.current.temp_c }}</h3>
+        <p>{{ forecast.current.condition.text }}</p>
       </div>
-      <div>cloudy graphic</div>
+      <div>
+        <img
+          :src="forecast.current.condition.icon"
+          :alt="forecast.current.condition.text"
+        />
+      </div>
     </div>
     <div class="home-weather-details">
       <p>rain 10%</p>
@@ -25,17 +30,17 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, onMounted, ref } from "vue";
+import { defineComponent, ref } from "vue";
 import { getForecast } from "@/api/weather";
 
 export default defineComponent({
   name: "Home",
   components: {},
-  setup() {
+  async setup() {
     const forecast = ref({});
-    onMounted(async () => {
-      await getForecast("Sydney", 1);
-    });
+    const defaultLocation = "Sydney";
+    const resp = await getForecast(defaultLocation, 1);
+    forecast.value = resp.data;
     return {
       forecast,
     };
