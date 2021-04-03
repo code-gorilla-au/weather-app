@@ -10,6 +10,6 @@ export function formatMM(value: string | number): string {
   return `${value} mm`;
 }
 
-export function formatPercent(value: string| number): string {
+export function formatPercent(value: string | number): string {
   return `${value}%`;
 }
