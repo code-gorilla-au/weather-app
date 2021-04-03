@@ -32,11 +32,10 @@
       <p><base-icon pack="far" icon="fa-moon" /> {{ astro.moonset }}</p>
     </div>
     <div class="home-hourly-forecast">
-      <p>8am</p>
-      <p>9am</p>
-      <p>10am</p>
-      <p>11am</p>
-      <p>12noon</p>
+      <p v-for="hour in hours" :key="hour.date">
+        {{ hour.time }}
+        <img :src="hour.condition.icon" :alt="hour.condition.text" />
+      </p>
     </div>
   </div>
 </template>
@@ -56,7 +55,7 @@ export default defineComponent({
     const { data } = await getForecast(defaultLocation, 1);
     const today = data.forecast.forecastday[dayIndex.value].day;
     const current = data.current;
-    const hour = data.forecast.forecastday[dayIndex.value].hour;
+    const hours = data.forecast.forecastday[dayIndex.value].hour;
     const astro = data.forecast.forecastday[dayIndex.value].astro;
     const currentTemp = formatCelsius(current.temp_c);
     const minTemp = formatCelsius(today.mintemp_c);
@@ -68,7 +67,7 @@ export default defineComponent({
       current,
       currentTemp,
       astro,
-      hour,
+      hours,
       minTemp,
       maxTemp,
       changeOfRain,
@@ -94,5 +93,6 @@ export default defineComponent({
 .home-hourly-forecast {
   display: flex;
   justify-content: space-evenly;
+  overflow-x: auto;
 }
 </style>
