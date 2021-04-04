@@ -1,10 +1,12 @@
 <template>
   <div class="forecast-hour">
-    <p>
-      <img :src="conditionIcon" :alt="conditionText" />
-      {{ temp }}
-      {{ time }}
-    </p>
+    <span>
+      <small>{{ time }}</small>
+    </span>
+    <img :src="conditionIcon" :alt="conditionText" />
+    <span>
+      <small>{{ temp }}</small>
+    </span>
   </div>
 </template>
 
@@ -35,6 +37,7 @@ export default defineComponent({
 
 <style lang="scss">
 .forecast-hour {
+  margin: 1rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
