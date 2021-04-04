@@ -24,7 +24,7 @@
 <script lang="ts">
 import { defineComponent, ref } from "vue";
 import { getForecast } from "@/api/weather";
-import { formatCelsius, formatKph, formatPercent } from "@/lib/format";
+import { formatCelsius } from "@/lib/format";
 import ForecastHour from "@/components/ForecastHour.vue";
 import ForecastAstro from "@/components/ForecastAstro.vue";
 import ForecastDetails from "@/components/ForecastDetails.vue";

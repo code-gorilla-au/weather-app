@@ -19,7 +19,7 @@
   </div>
 </template>
 <script lang="ts">
-import { formatCelsius } from "@/lib/format";
+import { formatCelsius, formatPercent } from "@/lib/format";
 import { Day } from "@/lib/weather";
 import { defineComponent, PropType } from "vue";
 
@@ -34,7 +34,7 @@ export default defineComponent({
     return {
       minTemp: formatCelsius(props.day?.mintemp_c || ""),
       maxTemp: formatCelsius(props.day?.maxtemp_c || ""),
-      chanceOfRain: formatCelsius(props.day?.daily_chance_of_rain || ""),
+      chanceOfRain: formatPercent(props.day?.daily_chance_of_rain || ""),
       windSpeed: formatCelsius(props.day?.maxwind_kph || ""),
     };
   },
