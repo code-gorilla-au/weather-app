@@ -59,7 +59,8 @@ export default defineComponent({
 @import "src/assets/styles/variables";
 
 .home {
-  margin: 0rem 0.5rem;
+  width: Min(100%, 550px);
+  margin: 0 auto;
 }
 .home-weather-current {
   display: flex;
@@ -76,8 +77,8 @@ export default defineComponent({
     font-weight: 700;
     border-radius: 9px;
     text-align: center;
-    background-color: $colour-dark-default;
-    color: $colour-white-default;
+    background-color: $colour-secondary-default;
+    color: $colour-dark-default;
   }
 }
 .home-weather-summary {
