@@ -1,16 +1,20 @@
 <template>
-  <div id="app">
-    <Suspense>
-      <template #default>
-        <router-view />
-      </template>
-      <template #fallback>
-        <div>
-          <h1>Loading...</h1>
-        </div>
-      </template>
-    </Suspense>
-  </div>
+  <router-view v-slot="{ Component }">
+    <template v-if="Component">
+      <transition mode="out-in">
+        <keep-alive>
+          <suspense>
+            <component :is="Component"></component>
+            <template #fallback>
+              <div class="loader-container">
+                <h1>Loading</h1>
+              </div>
+            </template>
+          </suspense>
+        </keep-alive>
+      </transition>
+    </template>
+  </router-view>
 </template>
 
 <style lang="scss">
@@ -42,5 +46,8 @@ body {
   display: flex;
   flex-direction: column;
   height: 100vh;
+}
+.loader-container {
+  margin: 4rem auto;
 }
 </style>
