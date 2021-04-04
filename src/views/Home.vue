@@ -2,7 +2,7 @@
   <div class="home">
     <div class="home-weather-summary">
       <div class="home-weather-current">
-        <span class="weather-current-location">{{ location.name }}</span>
+        <span class="weather-current-location">{{ location }}</span>
         <span class="weather-current-temp">{{ currentTemp }}</span>
         <span class="weather-current-condition">{{
           current.condition.text
