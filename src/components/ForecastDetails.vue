@@ -44,6 +44,7 @@ export default defineComponent({
 @import "src/assets/styles/variables";
 
 .forecast-details {
+  margin: 2rem 0rem;
   display: flex;
   justify-content: space-around;
   flex-flow: row wrap;

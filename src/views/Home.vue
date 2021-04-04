@@ -69,7 +69,7 @@ export default defineComponent({
     margin-bottom: 0.5rem;
   }
   & .weather-current-temp {
-    font-size: $font-3xl;
+    font-size: $font-5xl;
     font-weight: 900;
   }
   & .weather-current-condition {

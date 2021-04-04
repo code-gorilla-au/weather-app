@@ -1,16 +1,28 @@
 <template>
   <div class="forecast-astro">
     <div class="astro-row">
-      <base-icon icon="fa-sun fa-2x" /> <span>{{ sunrise }}</span>
+      <base-icon icon="fa-sun fa-xl" />
+      <span>
+        <small>{{ sunrise }}</small>
+      </span>
     </div>
     <div class="astro-row">
-      <base-icon pack="far" icon="fa-sun fa-2x" /> <span>{{ sunset }}</span>
+      <base-icon pack="far" icon="fa-sun fa-xl" />
+      <span>
+        <small>{{ sunset }}</small>
+      </span>
     </div>
     <div class="astro-row">
-      <base-icon icon="fa-moon fa-2x" /> <span>{{ moonrise }}</span>
+      <base-icon icon="fa-moon fa-xl" />
+      <span>
+        <small>{{ moonrise }}</small>
+      </span>
     </div>
     <div class="astro-row">
-      <base-icon pack="far" icon="fa-moon fa-2x" /> <span>{{ moonset }}</span>
+      <base-icon pack="far" icon="fa-moon fa-xl" />
+      <span>
+        <small>{{ moonset }}</small>
+      </span>
     </div>
   </div>
 </template>
@@ -38,6 +50,7 @@ export default defineComponent({
 
 <style lang="scss" scoped>
 .forecast-astro {
+  margin: 1rem 0rem;
   display: flex;
   justify-content: space-evenly;
 }
