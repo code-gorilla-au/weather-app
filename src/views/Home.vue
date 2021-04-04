@@ -13,21 +13,7 @@
         <img :src="current.condition.icon" :alt="current.condition.text" />
       </div>
     </div>
-    <div class="home-weather-details">
-      <p>
-        <base-icon icon="fa-temperature-low" />
-        {{ minTemp }}
-      </p>
-      <p>
-        <base-icon icon="fa-temperature-high" />
-        {{ maxTemp }}
-      </p>
-      <p>
-        <base-icon icon="fa-tint" />
-        {{ changeOfRain }}
-      </p>
-      <p><base-icon icon="fa-wind" /> {{ windSpeed }}</p>
-    </div>
+    <ForecastDetails :day="today" />
     <ForecastAstro :astro="astro" />
     <div class="home-hourly-forecast">
       <ForecastHour v-for="hour in hours" :key="hour.time" :hour="hour" />
@@ -39,13 +25,13 @@
 import { defineComponent, ref } from "vue";
 import { getForecast } from "@/api/weather";
 import { formatCelsius, formatKph, formatPercent } from "@/lib/format";
-import BaseIcon from "@/components/BaseIcon.vue";
 import ForecastHour from "@/components/ForecastHour.vue";
 import ForecastAstro from "@/components/ForecastAstro.vue";
+import ForecastDetails from "@/components/ForecastDetails.vue";
 
 export default defineComponent({
   name: "Home",
-  components: { BaseIcon, ForecastHour, ForecastAstro },
+  components: { ForecastHour, ForecastAstro, ForecastDetails },
   async setup() {
     const defaultLocation = "Sydney";
     const dayIndex = ref(0);
@@ -56,20 +42,13 @@ export default defineComponent({
     const hours = data.forecast.forecastday[dayIndex.value].hour;
     const astro = data.forecast.forecastday[dayIndex.value].astro;
     const currentTemp = formatCelsius(current.temp_c);
-    const minTemp = formatCelsius(today.mintemp_c);
-    const maxTemp = formatCelsius(today.maxtemp_c);
-    const changeOfRain = formatPercent(today.daily_chance_of_rain);
-    const windSpeed = formatKph(today.maxwind_kph);
     return {
       location: data.location,
       current,
       currentTemp,
       astro,
       hours,
-      minTemp,
-      maxTemp,
-      changeOfRain,
-      windSpeed,
+      today,
       week,
     };
   },
