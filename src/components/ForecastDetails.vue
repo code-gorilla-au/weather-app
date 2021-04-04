@@ -57,6 +57,6 @@ export default defineComponent({
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 33%;
+  width: 25%;
 }
 </style>
