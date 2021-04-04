@@ -1,21 +1,21 @@
 <template>
   <div class="forecast-details">
-    <span class="forecast-details-row">
+    <div class="forecast-details-row">
       <base-icon icon="fa-temperature-low fa-2x" />
       <span class="forecast-detail-text">{{ minTemp }}</span>
-    </span>
-    <span class="forecast-details-row">
+    </div>
+    <div class="forecast-details-row">
       <base-icon icon="fa-temperature-high fa-2x" />
       <span class="forecast-detail-text">{{ maxTemp }}</span>
-    </span>
-    <span class="forecast-details-row">
+    </div>
+    <div class="forecast-details-row">
       <base-icon icon="fa-tint fa-2x" />
       <span class="forecast-detail-text">{{ chanceOfRain }}</span>
-    </span>
-    <span class="forecast-details-row">
+    </div>
+    <div class="forecast-details-row">
       <base-icon icon="fa-wind fa-2x" />
       <span class="forecast-detail-text">{{ windSpeed }}</span>
-    </span>
+    </div>
   </div>
 </template>
 <script lang="ts">

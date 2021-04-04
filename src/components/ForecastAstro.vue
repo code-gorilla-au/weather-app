@@ -45,6 +45,8 @@ export default defineComponent({
   margin: 0.5rem;
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   & span {
     margin-top: 0.5rem;
   }
