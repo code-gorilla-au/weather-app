@@ -1,11 +1,14 @@
 <template>
   <div class="home">
     <div class="home-weather-summary">
-      <div>
-        <h2>{{ location.name }}</h2>
-        <h1>{{ currentTemp }}</h1>
-        <h4>{{ current.condition.text }}</h4>
+      <div class="home-weather-current">
+        <span class="weather-current-location">{{ location.name }}</span>
+        <span class="weather-current-temp">{{ currentTemp }}</span>
+        <span class="weather-current-condition">{{
+          current.condition.text
+        }}</span>
       </div>
+
       <div>
         <img :src="current.condition.icon" :alt="current.condition.text" />
       </div>
@@ -74,10 +77,32 @@ export default defineComponent({
 </script>
 
 <style lang="scss" scoped>
+@import "src/assets/styles/variables";
+
 .home {
   margin: 0rem 0.5rem;
 }
+.home-weather-current {
+  display: flex;
+  flex-direction: column;
+  & .weather-current-location {
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+  }
+  & .weather-current-temp {
+    font-size: $font-3xl;
+    font-weight: 900;
+  }
+  & .weather-current-condition {
+    font-weight: 700;
+    border-radius: 9px;
+    text-align: center;
+    background-color: $colour-dark-default;
+    color: $colour-white-default;
+  }
+}
 .home-weather-summary {
+  margin: 1rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;

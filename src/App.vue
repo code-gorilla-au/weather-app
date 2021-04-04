@@ -14,6 +14,8 @@
 </template>
 
 <style lang="scss">
+@import "@/assets/styles/utility";
+
 html,
 body {
   padding: 0;
