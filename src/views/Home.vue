@@ -43,7 +43,7 @@ export default defineComponent({
     const astro = data.forecast.forecastday[dayIndex.value].astro;
     const currentTemp = formatCelsius(current.temp_c);
     return {
-      location: data.location,
+      location: defaultLocation,
       current,
       currentTemp,
       astro,
