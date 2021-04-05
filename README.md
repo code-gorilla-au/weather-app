@@ -2,8 +2,8 @@
 
 WIP:
 
-TODO - move state to vuex + create actions for api
-TODO - create routes for detailed hourly view
+TODO - move state to vuex + create actions for api.
+TODO - create routes for detailed hourly view.
 
 ## Project setup
 
