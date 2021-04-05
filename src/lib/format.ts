@@ -3,7 +3,7 @@ export function formatCelsius(value: string | number): string {
 }
 
 export function formatKph(value: string | number): string {
-  return `${value} km`;
+  return `${value} km/h`;
 }
 
 export function formatMM(value: string | number): string {
