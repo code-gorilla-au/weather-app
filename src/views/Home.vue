@@ -9,8 +9,10 @@
         }}</span>
       </div>
 
-      <div>
-        <img :src="current.condition.icon" :alt="current.condition.text" />
+      <div class="weather-current-image">
+        <figure>
+          <img :src="current.condition.icon" :alt="current.condition.text" />
+        </figure>
       </div>
     </div>
     <ForecastDetails :day="today" />
@@ -65,14 +67,18 @@ export default defineComponent({
 .home-weather-current {
   display: flex;
   flex-direction: column;
+  margin: 0rem 0.5rem;
+
   & .weather-current-location {
     font-weight: 700;
     margin-bottom: 0.5rem;
   }
+
   & .weather-current-temp {
     font-size: $font-5xl;
     font-weight: 900;
   }
+
   & .weather-current-condition {
     font-weight: 700;
     border-radius: 9px;
